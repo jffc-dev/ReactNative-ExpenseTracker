@@ -1,3 +1,4 @@
+import Button from '@/components/Button'
 import ScreenWrapper from '@/components/ScreenWrapper'
 import Typo from '@/components/Typo'
 import { colors, spacingX, spacingY } from '@/constants/theme'
@@ -27,7 +28,11 @@ const Welcome = () => {
                 <Typo size={17} color={colors.textLight}>Finances must be arranged to set a better</Typo>
                 <Typo size={17} color={colors.textLight}>lifestyle in future</Typo>
             </View>
-            <View style={styles.buttonContainer}></View>
+            <View style={styles.buttonContainer}>
+                <Button>
+                    <Typo size={22} color={colors.neutral900} fontWeight={"600"}>Get Started</Typo>
+                </Button>
+            </View>
         </View>
       </View>
     </ScreenWrapper>
