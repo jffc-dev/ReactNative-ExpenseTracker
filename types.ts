@@ -1,7 +1,7 @@
-import { Href } from "expo-router";
-import { Firestore, Timestamp } from "firebase/firestore";
-import { Icon } from "phosphor-react-native";
-import React, { ReactNode } from "react";
+import { Href } from 'expo-router';
+import { Firestore, Timestamp } from 'firebase/firestore';
+import { Icon } from 'phosphor-react-native';
+import React, { ReactNode } from 'react';
 import {
   ActivityIndicator,
   ActivityIndicatorProps,
@@ -13,7 +13,7 @@ import {
   TextStyle,
   TouchableOpacityProps,
   ViewStyle,
-} from "react-native";
+} from 'react-native';
 
 export type ScreenWrapperProps = {
   style?: ViewStyle;
@@ -34,7 +34,7 @@ export type accountOptionType = {
 export type TypoProps = {
   size?: number;
   color?: string;
-  fontWeight?: TextStyle["fontWeight"];
+  fontWeight?: TextStyle['fontWeight'];
   children: any | null;
   style?: TextStyle;
   textProps?: TextProps;
@@ -145,12 +145,12 @@ export type AuthContextType = {
   setUser: Function;
   login: (
     email: string,
-    password: string
+    password: string,
   ) => Promise<{ success: boolean; msg?: string }>;
   register: (
     email: string,
     password: string,
-    name: string
+    name: string,
   ) => Promise<{ success: boolean; msg?: string }>;
   updateUserData: (userId: string) => Promise<void>;
 };
