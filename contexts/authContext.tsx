@@ -27,6 +27,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
           email: firebaseUser?.email,
           image: firebaseUser?.photoURL,
         });
+        updateUserData(firebaseUser.uid);
         router.replace('/(tabs)');
       } else {
         setUser(null);
@@ -43,7 +44,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       return { success: true };
     } catch (error: any) {
       let msg = error.message;
-      return { success: false, message: msg };
+      if (msg.includes('auth/invalid-credential'))
+        msg = 'No user found with this email.';
+      if (msg.includes('auth/invalid-email')) msg = 'Invalid email address.';
+      return { success: false, msg };
     }
   };
 
@@ -62,7 +66,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       return { success: true };
     } catch (error: any) {
       let msg = error.message;
-      return { success: false, message: msg };
+      if (msg.includes('auth/weak-password')) msg = 'Password is too weak.';
+      if (msg.includes('auth/email-already-in-use'))
+        msg = 'Email is already in use.';
+      if (msg.includes('auth/invalid-email')) msg = 'Invalid email address.';
+      return { success: false, msg };
     }
   };
 
